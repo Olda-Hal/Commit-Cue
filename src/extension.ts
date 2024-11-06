@@ -76,7 +76,6 @@ function escapeCommitMessage(message: string): string {
         .replace(/\$/g, '\\$');
 }
 
-// Funkce pro kontrolu, jestli je soubor v git repozitáři
 async function isGitRepository(filePath: string): Promise<boolean> {
     try {
         const gitCommand = `git -C ${path.dirname(filePath)} rev-parse --is-inside-work-tree`;
@@ -96,7 +95,6 @@ function executeGitCommand(command: string, filePath: string) {
     }
 }
 
-// Funkce pro získání git diff
 function getGitDiff(filePath: string): string | null {
     try {
         const gitCommand = `cd "$(git -C ${path.dirname(filePath)} rev-parse --show-toplevel)" && git diff`;
@@ -110,7 +108,6 @@ function getGitDiff(filePath: string): string | null {
     }
 }
 
-// Funkce pro zjištění návrhu commit zprávy z OpenAI
 async function getCommitSuggestion(content: string, context: vscode.ExtensionContext): Promise<{ shouldCommit: boolean; commitMessage: string } | null> {
     let apiKey = context.globalState.get<string>(API_KEY_STORAGE_KEY);
     if (!apiKey) {

@@ -2,6 +2,7 @@
   "name": "commitcue",
   "displayName": "CommitCue",
   "description": "AI tool that suggests when to commit ",
+  "publisher": "Olda-Hal",
   "icon": "images/logo.png",
   "version": "1.0.0",
   "repository": {
